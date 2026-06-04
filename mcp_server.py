@@ -308,9 +308,16 @@ async def read_file(params: ReadFileInput) -> str:
 
 
 # ---------------------------------------------------------------------------
+# ASGI app (for uvicorn / Procfile)
+# ---------------------------------------------------------------------------
+
+app = mcp.streamable_http_app()
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    print("Starting local MCP server on http://localhost:3000 …", flush=True)
-    mcp.run(transport="streamable-http")
+    import uvicorn
+    print(f"Starting local MCP server on http://0.0.0.0:{PORT} …", flush=True)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)
