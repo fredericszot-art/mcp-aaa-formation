@@ -24,7 +24,8 @@ from mcp.server.fastmcp import FastMCP
 # Server
 # ---------------------------------------------------------------------------
 
-mcp = FastMCP("local_tools_mcp", host="127.0.0.1", port=3000)
+PORT = int(os.environ.get("PORT", 10000))
+mcp = FastMCP("local_tools_mcp", host="0.0.0.0", port=PORT)
 
 # ---------------------------------------------------------------------------
 # Shared helpers

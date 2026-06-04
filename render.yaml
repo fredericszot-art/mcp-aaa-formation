@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: mcp-aaa-formation
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python mcp_server.py
+    envVars:
+      - key: PORT
+        value: 10000
